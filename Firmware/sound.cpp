@@ -64,6 +64,7 @@ void Sound_MakeSound(eSOUND_TYPE eSoundType)
 {
 switch(eSoundMode)
      {
+     // All sounds, with repeating alert beeps.
      case e_SOUND_MODE_LOUD:
           if(eSoundType==e_SOUND_TYPE_ButtonEcho)
                Sound_DoSound_Echo();
@@ -72,6 +73,7 @@ switch(eSoundMode)
           if(eSoundType==e_SOUND_TYPE_StandardAlert)
                Sound_DoSound_Alert(false);
           break;
+     // All sounds, but alert beeps no not repeat.
      case e_SOUND_MODE_ONCE:
           if(eSoundType==e_SOUND_TYPE_ButtonEcho)
               Sound_DoSound_Echo();
@@ -80,10 +82,12 @@ switch(eSoundMode)
           if(eSoundType==e_SOUND_TYPE_StandardAlert)
                Sound_DoSound_Alert(true);
           break;
+     // Only alerts. Normal menu sounds are suppressed.
      case e_SOUND_MODE_SILENT:
           if(eSoundType==e_SOUND_TYPE_StandardAlert)
                Sound_DoSound_Alert(true);
           break;
+     // No sounds at all.
      case e_SOUND_MODE_MUTE:
           break;
      default:
